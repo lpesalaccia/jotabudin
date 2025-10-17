@@ -41,37 +41,22 @@
 
   <main>
 
-    <section id="contacto">
-      <h2>Envianos tu consulta por e-mail</h2>
-      <form>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Dirección de correo electrónico</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">Contenido</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="formFileMultiple" class="form-label">Adjuntar foto/s</label>
-          <input class="form-control" type="file" id="formFileMultiple" multiple>
-        </div>
-
-        <button type="submit">Enviar</button>
-      </form>
-
+    <section id="carrito-visual" style="margin-top:32px;">
+      <h2>Carrito de compras</h2>
+  <div id="lista-carrito" class="carrito-productos"></div>
+      <p>Total: $<span id="total">0</span></p>
+      <p>Envío: $<span id="envio">0</span></p>
+      <p>Descuento: $<span id="descuento">0</span></p>
+      <a id="checkout" href="https://wa.me/5492983409498" target="_blank">Comprar</a>
+      <button id="vaciarCarrito">Vaciar carrito</button>
+      <br><br>
+      <a href="./tienda.html" id="seguir-comprando" style="display:inline-block; padding:10px 20px; background:#222; color:#fff; border-radius:6px; text-decoration:none;">Seguir comprando</a>
     </section>
-
-    <h3>Contactanos también por nuestras redes:</h3>
-        <nav>
-          <ul>
-            <li><a href="https://wa.me/5491134567890" target="_blank">Enviar mensaje por WhatsApp</a></li>
-            <li><a href="https://instagram.com/jotabudin">Seguinos en instagram</a><br>
-          </ul>
-        </nav>
-
+  
+  
   </main>
-
+  
+  
   <footer class="footer">
     <div class="contenido-footer">
       <section class="footer-secciones">
@@ -83,7 +68,6 @@
           </ul>
         </nav>
       </section>
-
       <section class="footer-secciones">
         <nav>
           <ul>
@@ -91,15 +75,14 @@
             <li><a href="./nosotros.html">Nosotros</a></li>
             <li><a href="./servicios.html">Servicios</a></li>
             <li><a href="./contacto.html">Contacto</a></li>
+            <li><a href="./carrito.html">Carrito</a></li>
           </ul>
         </nav>
       </section>
-
     </div>
     <small>&copy; 2025 Jota Budín</small>
     <br>
   </footer>
   <script src="../script.js"></script>
 </body>
-
 </html>

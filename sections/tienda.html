@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Budines caseros, hechos con amor. Descubre nuestros sabores y síguenos en Instagram!">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <title>Jota Budín</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="../assets/img/logo.png" alt="Logo Jota Budín" class="logo">
+    </div>
+
+    <h1 class="titulo">JOTA BUDÍN </h1>
+
+    <nav id="nav-icons">
+      <div class="menu-container">
+        <span class="material-symbols-outlined menu-icon">menu</span>
+        <ul class="dropdown">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <a href="#" id="carrito-icono" class="carrito-icono" title="Carrito" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito" aria-controls="offcanvasCarrito">
+        <span class="material-symbols-outlined">shopping_bag</span>
+        <span id="carrito-contador" class="badge-carrito">0</span>
+      </a>
+
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Barra de navegación de Bootstrap -->
+
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand">Productos</a>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="nombre del producto" aria-label="Search" />
+          <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+      </div>
+
+      <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Dropdown link
+        </a>
+
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <! -- carrito dropdown -->
+
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito" aria-labelledby="offcanvasCarritoLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasCarritoLabel">Carrito de compras</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div id="carrito-offcanvas-lista"></div>
+          <div class="mt-3">
+            <button id="cerrar-pago-btn" class="btn btn-success w-100">Cerrar pago</button>
+          </div>
+        </div>
+      </div>
+
+
+      <! -- Productos en tarjetas de Bootstrap -->
+        <section id="productos-tienda">
+
+          <div class="card" style="width: 18rem;">
+            <img src="../assets/img/alfajores-almendras.jpg" class="card-img-top" alt="alfajores-almendras">
+            <div class="card-body">
+              <h5 class="card-title">Alfajores de almendras</h5>
+              <p class="card-text">Tapas de harina de almendras rellenos con dulce de leche.</p>
+              <a href="#" class="btn btn-primary agregar-carrito" data-id="1">Añadir a la bolsa</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="../assets/img/budin-marmolado.jpg" class="card-img-top" alt="budin-marmolado">
+            <div class="card-body">
+              <h5 class="card-title">Budín Marmolado</h5>
+              <p class="card-text">Tapas de harina de almendras rellenos con dulce de leche.</p>
+              <a href="#" class="btn btn-primary agregar-carrito" data-id="2">Añadir a la bolsa</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="../assets/img/budin-banana.jpg" class="card-img-top" alt="budin-banana">
+            <div class="card-body">
+              <h5 class="card-title">Budín de Banana</h5>
+              <p class="card-text">Tapas de harina de almendras rellenos con dulce de leche.</p>
+              <a href="#" class="btn btn-primary agregar-carrito" data-id="3">Añadir a la bolsa</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="../assets/img/budin-limoncillo.jpg" class="card-img-top" alt="budin-limoncillo">
+            <div class="card-body">
+              <h5 class="card-title">Budín Limoncillo</h5>
+              <p class="card-text">Tapas de harina de almendras rellenos con dulce de leche.</p>
+              <a href="#" class="btn btn-primary agregar-carrito" data-id="4">Añadir a la bolsa</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="../assets/img/budin-hamburgues.jpg" class="card-img-top" alt="budin-hamburgues">
+            <div class="card-body">
+              <h5 class="card-title">Budín Hamburgues</h5>
+              <p class="card-text">Tapas de harina de almendras rellenos con dulce de leche.</p>
+              <a href="#" class="btn btn-primary agregar-carrito" data-id="5">Añadir a la bolsa</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="../assets/img/budin-zanahoria.jpg" class="card-img-top" alt="budin-zanahoria">
+            <div class="card-body">
+              <h5 class="card-title">Budín de Zanahoria</h5>
+              <p class="card-text">Tapas de harina de almendras rellenos con dulce de leche.</p>
+              <a href="#" class="btn btn-primary agregar-carrito" data-id="6">Añadir a la bolsa</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="../assets/img/cookie.jpg" class="card-img-top" alt="cookie">
+            <div class="card-body">
+              <h5 class="card-title">Cookie</h5>
+              <p class="card-text">Tapas de harina de almendras rellenos con dulce de leche.</p>
+              <a href="#" class="btn btn-primary agregar-carrito" data-id="7">Añadir a la bolsa</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="../assets/img/brownie.jpg" class="card-img-top" alt="brownie">
+            <div class="card-body">
+              <h5 class="card-title">Brownie</h5>
+              <p class="card-text">Tapas de harina de almendras rellenos con dulce de leche.</p>
+              <a href="#" class="btn btn-primary agregar-carrito" data-id="8">Añadir a la bolsa</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="../assets/img/sablee-almendras.jpg" class="card-img-top" alt="sablee-almendras">
+            <div class="card-body">
+              <h5 class="card-title">Sablee de Almendras</h5>
+              <p class="card-text">Tapas de harina de almendras rellenos con dulce de leche.</p>
+              <a href="#" class="btn btn-primary agregar-carrito" data-id="9">Añadir a la bolsa</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="../assets/img/rogel.jpg" class="card-img-top" alt="rogel">
+            <div class="card-body">
+              <h5 class="card-title">Rogel</h5>
+              <p class="card-text">Tapas de harina de almendras rellenos con dulce de leche.</p>
+              <a href="#" class="btn btn-primary agregar-carrito" data-id="10">Añadir a la bolsa</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="../assets/img/petit-fours.jpg" class="card-img-top" alt="petit-fours">
+            <div class="card-body">
+              <h5 class="card-title">Petit Fours</h5>
+              <p class="card-text">Tapas de harina de almendras rellenos con dulce de leche.</p>
+              <a href="#" class="btn btn-primary agregar-carrito" data-id="11">Añadir a la bolsa</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="../assets/img/mini-alfajores.jpg" class="card-img-top" alt="mini-alfajores">
+            <div class="card-body">
+              <h5 class="card-title">Mini Alfajores</h5>
+              <p class="card-text">Tapas de harina de almendras rellenos con dulce de leche.</p>
+              <a href="#" class="btn btn-primary agregar-carrito" data-id="12">Añadir a la bolsa</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img src="../assets/img/mini-budines.jpg" class="card-img-top" alt="mini-budines">
+            <div class="card-body">
+              <h5 class="card-title">Mini Budines</h5>
+              <p class="card-text">Tapas de harina de almendras rellenos con dulce de leche.</p>
+              <a href="#" class="btn btn-primary agregar-carrito" data-id="13">Añadir a la bolsa</a>
+            </div>
+          </div>
+
+
+        </section>
+
+
+  </main>
+
+  <footer class="footer">
+    <div class="contenido-footer">
+      <section class="footer-secciones">
+        <h3>Contactanos!</h3>
+        <nav>
+          <ul>
+            <li><a href="https://wa.me/5491134567890" target="_blank">Enviar mensaje por WhatsApp</a></li>
+            <li><a href="https://instagram.com/jotabudin">Seguinos en instagram</a><br>
+          </ul>
+        </nav>
+      </section>
+
+      <section class="footer-secciones">
+        <nav>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./nosotros.html">Nosotros</a></li>
+            <li><a href="./tienda.html">Tienda</a></li>
+            <li><a href="./contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+      </section>
+
+    </div>
+    <small>&copy; 2025 Jota Budín</small>
+    <br>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+
+</html>
