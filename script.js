@@ -1,4 +1,4 @@
-// --- Carrito Offcanvas en tienda ---
+// --- Carrito Offcanvas en tienda ------------------------------------------------------------------------------------------
 function mostrarCarritoOffcanvas() {
   const lista = document.getElementById("carrito-offcanvas-lista");
   if (!lista) return;
@@ -19,7 +19,7 @@ function mostrarCarritoOffcanvas() {
     card.innerHTML = `
       <div class="row g-0 align-items-center">
         <div class="col-auto">
-          <img src='${getImagenRuta(item.imagen)}' class='img-fluid rounded-start' style='width:60px; height:60px; object-fit:cover; border-radius:8px; margin:10px;'>
+          <img src='${item.imagen}' class='img-fluid rounded-start' style='width:60px; height:60px; object-fit:cover; border-radius:8px; margin:10px;'>
         </div>
         <div class="col">
           <div class="card-body" style="padding:10px 8px;">
@@ -70,10 +70,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// -------------------------------------------------- Búsqueda simple en tienda --------------------------------------------------
+// -------------------------------------------------- Búsqueda en tienda --------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   const productosContainer = document.getElementById("productos-tienda");
-  if (!productosContainer) return; // solo funciona en la página de tienda
+  if (!productosContainer) return; // solo funciona en la pagina de tienda
 
   const searchForm = document.querySelector('nav.navbar form[role="search"]');
   const searchInput = searchForm ? searchForm.querySelector('input[type="search"]') : null;
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Convertir texto a minúsculas para comparar
+    // Convertir texto a minusculas para comparar
     const texto = textoBusqueda.toLowerCase().trim();
     const tarjetas = Array.from(productosContainer.children);
     
@@ -140,43 +140,37 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Carrito de compras completo y persistente en localStorage ---------------------------------------------------------------------------------------------------------
+// Carrito de compras persistente en localStorage ---------------------------------------------------------------------------------------------------------
 
-function getImagenRuta(imagen) {
-  return '/assets/' + imagen;
-}
 
 const productosTienda = [
-  { id: 1, nombre: "Alfajores de almendras (6 unidades)", precio: 8000, imagen: "./assets/alfajores-almendras.jpg" },
-  { id: 2, nombre: "Budín marmolado", precio: 17000, imagen: "./assets/budin-marmolado.jpg" },
-  { id: 3, nombre: "Budín de banana", precio: 18000, imagen: "./assets/budin-banana.jpg" },
-  { id: 4, nombre: "Budín de limoncillo", precio: 20000, imagen: "./assets/budin-limoncillo.jpg" },
-  { id: 5, nombre: "Budín de hamburgues", precio: 22000, imagen: "./assets/budin-hamburgues.jpg" },
-  { id: 6, nombre: "Budín de zanahoria", precio: 22000, imagen: "./assets/budin-zanahoria.jpg" },
-  { id: 7, nombre: "Cookie (cualquier sabor)", precio: 4000, imagen: "./assets/cookie.jpg" },
-  { id: 8, nombre: "Brownie", precio: 28000, imagen: "./assets/brownie.jpg" },
-  { id: 9, nombre: "Sablée de almendras", precio: 30000, imagen: "./assets/sablee-almendras.jpg" },
-  { id: 10, nombre: "Rogel", precio: 20000, imagen: "./assets/rogel.jpg" },
-  { id: 11, nombre: "Caja de petit fours", precio: 24000, imagen: "./assets/petit-fours.jpg" },
-  { id: 12, nombre: "Caja mini alfajores (36 unidades)", precio: 25000, imagen: "./assets/mini-alfajores.jpg" },
-  { id: 13, nombre: "Caja mini budines", precio: 20000, imagen: "./assets/mini-budines.jpg" }
+  { id: 1, nombre: "Alfajores de almendras (6 unidades)", precio: 8000, imagen: getImagePath("alfajores-almendras.jpg") },
+  { id: 2, nombre: "Budín marmolado", precio: 17000, imagen: getImagePath("budin-marmolado.jpg") },
+  { id: 3, nombre: "Budín de banana", precio: 18000, imagen: getImagePath("budin-banana.jpg") },
+  { id: 4, nombre: "Budín de limoncillo", precio: 20000, imagen: getImagePath("budin-limoncillo.jpg") },
+  { id: 5, nombre: "Budín de hamburgues", precio: 22000, imagen: getImagePath("budin-hamburgues.jpg") },
+  { id: 6, nombre: "Budín de zanahoria", precio: 22000, imagen: getImagePath("budin-zanahoria.jpg") },
+  { id: 7, nombre: "Cookie (cualquier sabor)", precio: 4000, imagen: getImagePath("cookie.jpg") },
+  { id: 8, nombre: "Brownie", precio: 28000, imagen: getImagePath("brownie.jpg") },
+  { id: 9, nombre: "Sablée de almendras", precio: 30000, imagen: getImagePath("sablee-almendras.jpg") },
+  { id: 10, nombre: "Rogel", precio: 20000, imagen: getImagePath("rogel.jpg") },
+  { id: 11, nombre: "Caja de petit fours", precio: 24000, imagen: getImagePath("petit-fours.jpg") },
+  { id: 12, nombre: "Caja mini alfajores (36 unidades)", precio: 25000, imagen: getImagePath("mini-alfajores.jpg") },
+  { id: 13, nombre: "Caja mini budines", precio: 20000, imagen: getImagePath("mini-budines.jpg") }
 ];
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-// function agregarAlCarrito(id) {
-//   const producto = productosTienda.find(p => p.id == id);
-//   if (!producto) return;
-//   const item = carrito.find(p => p.id == id);
-//   if (item) {
-//     item.cantidad++;
-//   } else {
-//     carrito.push({ ...producto, cantidad: 1 });
-//   }
-//   guardarCarrito();
-//   mostrarCarrito();
-//   actualizarContadorCarrito();
-// }
+// Función para detectar la ruta correcta según la ubicación actual
+function getImagePath(imageName) {
+  // Si estamos en la carpeta sections/, necesitamos ir un nivel arriba
+  if (window.location.pathname.includes('/sections/')) {
+    return `../assets/img/${imageName}`;
+  }
+  // Si estamos en la raíz, usamos la ruta relativa normal
+  return `./assets/img/${imageName}`;
+}
+
 
 function agregarAlCarrito(id) {
   // Buscar solo productos que existen en la tienda
@@ -236,7 +230,7 @@ function mostrarCarrito() {
     card.innerHTML = `
       <div class="row g-0 align-items-center">
         <div class="col-auto">
-          <img src='${getImagenRuta(item.imagen)}' class='img-fluid rounded-start' style='width:80px; height:80px; object-fit:cover; border-radius:8px; margin:12px;'>
+          <img src='${item.imagen}' class='img-fluid rounded-start' style='width:80px; height:80px; object-fit:cover; border-radius:8px; margin:12px;'>
         </div>
         <div class="col">
           <div class="card-body" style="padding:12px 8px;">
@@ -312,6 +306,8 @@ function actualizarContadorCarrito() {
   }
 }
 
+// --- mensaje de compra realizada en whatsapp ---------------------------------------------------------------------------------------------------------
+
 function sanitizePhoneNumber(raw) {
   if (!raw) return "";
   return String(raw).replace(/[^0-9]/g, "");
@@ -353,7 +349,7 @@ function construirMensajeWhatsapp() {
   return lineas.join("\n");
 }
 
-// Checkout simulado
+// --- Checkout ---------------------------------------------------------------------------------
 function inicializarCarrito() {
   carrito = carrito.filter(p => productosTienda.some(pt => pt.id === p.id));
   guardarCarrito();
