@@ -41,16 +41,16 @@
 
   <main>
 
-    <section id="carrito-visual" style="margin-top:32px;">
+    <section id="carrito-visual">
       <h2>Carrito de compras</h2>
   <div id="lista-carrito" class="carrito-productos"></div>
       <p>Total: $<span id="total">0</span></p>
       <p>Envío: $<span id="envio">0</span></p>
       <p>Descuento: $<span id="descuento">0</span></p>
-      <a id="checkout" href="https://wa.me/5492983409498" target="_blank">Comprar</a>
+      <button id="checkout" onclick="location.href='https://wa.me/5492983409498'">Comprar</button>
       <button id="vaciarCarrito">Vaciar carrito</button>
       <br><br>
-      <a href="./tienda.html" id="seguir-comprando" style="display:inline-block; padding:10px 20px; background:#222; color:#fff; border-radius:6px; text-decoration:none;">Seguir comprando</a>
+      <button onclick="location.href='./tienda.html'" id="seguir-comprando">Seguir comprando</button>
     </section>
   
   
