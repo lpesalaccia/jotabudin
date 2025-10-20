@@ -32,8 +32,9 @@
         </ul>
       </div>
 
-      <a href="carrito.html" title="Carrito">
+      <a href="carrito.html" class="carrito-icono" title="Carrito">
         <span class="material-symbols-outlined">shopping_bag</span>
+        <span id="carrito-contador" class="badge-carrito">0</span>
       </a>
 
     </nav>
@@ -47,7 +48,7 @@
       <p>Total: $<span id="total">0</span></p>
       <p>Envío: $<span id="envio">0</span></p>
       <p>Descuento: $<span id="descuento">0</span></p>
-      <button id="checkout" onclick="location.href='https://wa.me/5492983409498'">Comprar</button>
+      <a id="checkout" href="https://wa.me/5492983409498" class="btn btn-primary" target="_blank">Comprar</a>
       <button id="vaciarCarrito">Vaciar carrito</button>
       <br><br>
       <button onclick="location.href='./tienda.html'" id="seguir-comprando">Seguir comprando</button>
@@ -83,6 +84,12 @@
     <small>&copy; 2025 Jota Budín</small>
     <br>
   </footer>
+
+  <!-- Botón de scroll to top -->
+  <button id="scrollToTop" class="scroll-to-top" title="Ir al inicio">
+    <span class="material-symbols-outlined">keyboard_arrow_up</span>
+  </button>
+
   <script src="../script.js"></script>
 </body>
 </html>

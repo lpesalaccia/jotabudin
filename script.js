@@ -1,4 +1,4 @@
-// --- Carrito Offcanvas en tienda ------------------------------------------------------------------------------------------
+// --- carrito offcanvas en tienda ------------------------------------------------------------------------------------------
 function mostrarCarritoOffcanvas() {
   const lista = document.getElementById("carrito-offcanvas-lista");
   if (!lista) return;
@@ -39,13 +39,13 @@ function mostrarCarritoOffcanvas() {
     suma += item.precio * item.cantidad;
   });
   lista.appendChild(grid);
-  // Total
+  // total
   const totalDiv = document.createElement("div");
   totalDiv.className = "mt-2 mb-2";
   totalDiv.innerHTML = `<strong>Total: $${suma}</strong>`;
   lista.appendChild(totalDiv);
 
-  // Configurar botón de acción según estado del carrito
+  // configurar boton de accion segun estado del carrito
   const cerrarPagoBtn = document.getElementById("cerrar-pago-btn");
   if (cerrarPagoBtn) {
     if (carrito.length === 0) {
@@ -62,7 +62,7 @@ function mostrarCarritoOffcanvas() {
   }
 }
 
-// Evento para mostrar el carrito en el offcanvas
+// evento para mostrar el carrito en el offcanvas
 document.addEventListener("DOMContentLoaded", () => {
   const offcanvasCarrito = document.getElementById("offcanvasCarrito");
   if (offcanvasCarrito) {
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// -------------------------------------------------- Búsqueda en tienda --------------------------------------------------
+// -------------------------------------------------- busqueda en tienda --------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   const productosContainer = document.getElementById("productos-tienda");
   if (!productosContainer) return; // solo funciona en la pagina de tienda
@@ -78,35 +78,35 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchForm = document.querySelector('nav.navbar form[role="search"]');
   const searchInput = searchForm ? searchForm.querySelector('input[type="search"]') : null;
 
-  // Guardar el orden original de las tarjetas
+  // guardar el orden original de las tarjetas
   const tarjetasOriginales = Array.from(productosContainer.children);
 
   function buscarProductos(textoBusqueda) {
-    // Si no hay texto, mostrar todos los productos en orden original
+    // si no hay texto, mostrar todos los productos en orden original
     if (!textoBusqueda || textoBusqueda.trim() === "") {
       tarjetasOriginales.forEach(tarjeta => productosContainer.appendChild(tarjeta));
       return;
     }
 
-    // Convertir texto a minusculas para comparar
+    // convertir texto a minusculas para comparar
     const texto = textoBusqueda.toLowerCase().trim();
     const tarjetas = Array.from(productosContainer.children);
     
-    // Array para guardar las tarjetas con su puntuación
+    // array para guardar las tarjetas con su puntuacion
     const tarjetasConPuntuacion = [];
 
     tarjetas.forEach(tarjeta => {
-      // Obtener el nombre del producto desde el título de la tarjeta
+      // obtener el nombre del producto desde el titulo de la tarjeta
       const titulo = tarjeta.querySelector('.card-title');
       const nombreProducto = titulo ? titulo.textContent.toLowerCase() : "";
       
       let puntuacion = 0;
       
-      // Si el nombre contiene el texto buscado, dar puntos
+      // si el nombre contiene el texto buscado, dar puntos
       if (nombreProducto.includes(texto)) {
         puntuacion = 100; // Muchos puntos si contiene el texto
         
-        // Bonus si empieza con el texto buscado
+        // bonus si empieza con el texto buscado
         if (nombreProducto.startsWith(texto)) {
           puntuacion += 50;
         }
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Carrito de compras persistente en localStorage ---------------------------------------------------------------------------------------------------------
+// carrito de compras persistente en localstorage ---------------------------------------------------------------------------------------------------------
 
 
 const productosTienda = [
@@ -161,7 +161,7 @@ const productosTienda = [
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-// Función para detectar la ruta correcta según la ubicación actual
+// funcion para detectar la ruta correcta segun la ubicacion actual
 function getImagePath(imageName) {
   // Si estamos en la carpeta sections/, necesitamos ir un nivel arriba
   if (window.location.pathname.includes('/sections/')) {
@@ -319,7 +319,7 @@ function getWhatsappNumberFromFooter() {
   if (!link) return "";
   try {
     const url = new URL(link.href);
-    // pathname como /54911...
+    // pathname tiene el número
     const path = url.pathname || "";
     const digits = sanitizePhoneNumber(path);
     return digits;
@@ -330,7 +330,7 @@ function getWhatsappNumberFromFooter() {
 
 function construirMensajeWhatsapp() {
   let lineas = [];
-  lineas.push("Hola Juana! 👋");
+  lineas.push("Hola Juana!");
   lineas.push("Quisiera hacer un pedido con estos productos:");
   lineas.push("");
 
@@ -346,10 +346,12 @@ function construirMensajeWhatsapp() {
   lineas.push("");
   lineas.push("Para la fecha...");
 
-  return lineas.join("\n");
+  const mensaje = lineas.join("\n");
+  console.log("Mensaje construido:", mensaje);
+  return mensaje;
 }
 
-// --- Checkout ---------------------------------------------------------------------------------
+// --- checkout ---------------------------------------------------------------------------------
 function inicializarCarrito() {
   carrito = carrito.filter(p => productosTienda.some(pt => pt.id === p.id));
   guardarCarrito();
@@ -364,23 +366,52 @@ function inicializarCarrito() {
   const vaciarBtn = document.getElementById("vaciarCarrito");
   if (vaciarBtn) vaciarBtn.addEventListener("click", vaciarCarrito);
   const checkoutBtn = document.getElementById("checkout");
-  if (checkoutBtn) checkoutBtn.addEventListener("click", function () {
-    if (carrito.length === 0) {
-      alert("El carrito está vacío.");
-      return;
-    }
-    const mensaje = construirMensajeWhatsapp();
-    // Tomar href base del HTML y solo agregar ?text=...
-    const baseHref = checkoutBtn.getAttribute('href') || 'https://wa.me/5491134567890';
-    const url = `${baseHref}${baseHref.includes('?') ? '&' : '?'}text=${encodeURIComponent(mensaje)}`;
-    checkoutBtn.setAttribute('href', url);
-    // no prevenimos navegación; dejamos que el <a> funcione
-  });
+  if (checkoutBtn) {
+    console.log("Botón checkout encontrado:", checkoutBtn);
+    checkoutBtn.addEventListener("click", function (e) {
+      console.log("Click en checkout, carrito:", carrito);
+      
+      if (carrito.length === 0) {
+        e.preventDefault();
+        alert("El carrito está vacío.");
+        return;
+      }
+      
+      // Construir el mensaje con los productos del carrito
+      const mensaje = construirMensajeWhatsapp();
+      
+      // Tomar el href base del botón y agregar el mensaje
+      const baseHref = checkoutBtn.getAttribute('href') || 'https://wa.me/5492983409498';
+      const url = `${baseHref}${baseHref.includes('?') ? '&' : '?'}text=${encodeURIComponent(mensaje)}`;
+      
+      console.log("URL final:", url);
+      
+      // Actualizar el href del enlace antes de que navegue
+      checkoutBtn.setAttribute('href', url);
+      
+      // Dejar que el enlace navegue naturalmente (no preventDefault)
+    });
+  } else {
+    console.log("Botón checkout no encontrado");
+  }
 }
 
+// inicializar contador del carrito en todas las paginas
+function inicializarContadorCarrito() {
+  // cargar carrito del localstorage
+  carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  // actualizar contador visual
+  actualizarContadorCarrito();
+}
+
+// ejecutar en todas las paginas
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", inicializarCarrito);
+  document.addEventListener("DOMContentLoaded", () => {
+    inicializarContadorCarrito();
+    inicializarCarrito();
+  });
 } else {
+  inicializarContadorCarrito();
   inicializarCarrito();
 }
 
@@ -415,4 +446,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-// Fin menu desplegable -------------------------------------------------------------------------------------------------------------------------
+// fin menu desplegable -------------------------------------------------------------------------------------------------------------------------
+
+// scroll to top ---------------------------------------------------------------------------------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  const scrollToTopBtn = document.getElementById("scrollToTop");
+  
+  if (scrollToTopBtn) {
+    // Mostrar/ocultar el botón según el scroll
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) { // Aparece después de 300px de scroll
+        scrollToTopBtn.classList.add("show");
+      } else {
+        scrollToTopBtn.classList.remove("show");
+      }
+    });
+
+    // Funcionalidad de scroll al hacer click
+    scrollToTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  }
+});
+
+// fin scroll to top -------------------------------------------------------------------------------------------------------------------------

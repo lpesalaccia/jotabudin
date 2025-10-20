@@ -1,4 +1,4 @@
-/* --- Reset y listas --- */
+/* --- reset y listas --- */
 ul {
     list-style: none;
     padding-left: 0;
@@ -8,7 +8,7 @@ li {
     margin-bottom: 8px;
 }
 
-/* --- Layout general --- */
+/* --- layout general --- */
 body {
     font-family: "Poppins", sans-serif;
     background: #fff;
@@ -17,7 +17,7 @@ body {
     color: #222;
 }
 
-/* --- Navegación --- */
+/* --- navegacion --- */
 nav a {
     margin: 0 10px;
     color: #222;
@@ -30,7 +30,7 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* --- Main y Section --- */
+/* --- main y section --- */
 main {
     padding: 10px;
 }
@@ -43,9 +43,9 @@ section {
     max-width: 900px;
 }
 
-/* ---------------------------------------------------- Header --------------------------------------------------- */
+/* ---------------------------------------------------- header --------------------------------------------------- */
 
-/* ==== HEADER ==== */
+/* ==== header ==== */
 header {
     background-color: #fff;
     position: sticky;
@@ -81,21 +81,21 @@ header {
     gap: 20px;
 }
 
-/* Íconos de material */
+/* iconos de material */
 .material-symbols {
     font-size: 32px;
     color: #333;
     cursor: pointer;
     transition: color 0.3s;
     user-select: none;
-    /* evita selección accidental */
+    /* evita seleccion accidental */
 }
 
 .material-symbols-outlined:hover {
     color: #7e7e7e;
 }
 
-/* Menú desplegable */
+/* menu desplegable */
 .menu-container {
     position: relative;
     display: inline-block;
@@ -130,7 +130,7 @@ header {
     background: #f8f8f8;
 }
 
-/* Cuando se activa el menú */
+/* cuando se activa el menu */
 .menu-container.active .dropdown {
     display: flex;
 }
@@ -145,9 +145,9 @@ header {
 
 
 
-/* ---------------------------------------------------- Home --------------------------------------------------- */
+/* ---------------------------------------------------- home --------------------------------------------------- */
 
-/* --- Carrusel imágenes --- */
+/* --- carrusel imagenes --- */
 #carouselExampleCaptions {
     max-width: 900px;
     margin: 0 auto;
@@ -166,7 +166,7 @@ header {
     object-position: center;
 }
 
-/* --- Adaptacion de flechas carrusel Bootstrap --- */
+/* --- adaptacion de flechas carrusel bootstrap --- */
 .carousel-control-prev,
 .carousel-control-next {
     background: transparent !important;
@@ -178,7 +178,7 @@ header {
 }
 
 
-/* --- Boton home "visita la tienda" --- */
+/* --- boton home "visita la tienda" --- */
 .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -196,7 +196,7 @@ header {
 }
 
 
-/* ---------------------------------------------------- Contacto --------------------------------------------------- */
+/* ---------------------------------------------------- contacto --------------------------------------------------- */
 .contacto {
     max-width: 400px;
     margin: 40px auto;
@@ -238,7 +238,7 @@ header {
     margin-top: 10px;
 }
 
-/* --- Formularios --- */
+/* --- formularios --- */
 input,
 button {
     margin: 10px 0;
@@ -261,7 +261,7 @@ button:hover {
 }
 
 
-/* ---------------------------------------------------- Nosotros --------------------------------------------------- */
+/* ---------------------------------------------------- nosotros --------------------------------------------------- */
 .nosotros-section {
     padding: 40px 20px;
 }
@@ -305,7 +305,7 @@ button:hover {
 }
 
 
-/* ---------------------------------------------------- Footer --------------------------------------------------- */
+/* ---------------------------------------------------- footer --------------------------------------------------- */
 footer {
     background-color: black;
     text-align: center;
@@ -346,7 +346,7 @@ footer small {
     padding: 10px;
 }
 
-/* ---------------------------------------------------- Carrito --------------------------------------------------- */
+/* ---------------------------------------------------- carrito --------------------------------------------------- */
 
 .carrito {
     display: flex;
@@ -367,7 +367,7 @@ footer small {
     color: white;
 }
 
-/* Icono del carrito con badge contador */
+/* icono del carrito con badge contador */
 .carrito-icono {
     position: relative;
     display: inline-flex;
@@ -444,7 +444,7 @@ footer small {
     color: #222;
 }
 
-/* -------------------------------------------------- Tienda -------------------------------------------------------------- */
+/* -------------------------------------------------- tienda -------------------------------------------------------------- */
 
 #productos-tienda {
     display: grid;
@@ -483,7 +483,7 @@ footer small {
 }
 
 
-/* ---------------------------------------------------- Responsive --------------------------------------------------- */
+/* ---------------------------------------------------- responsive --------------------------------------------------- */
 @media (max-width: 700px) {
     .header-row {
         align-items: center;
@@ -508,7 +508,7 @@ footer small {
         max-width: 98vw;
     }
 
-    /* Productos móvil: 3 por fila */
+    /* productos movil: 3 por fila */
     #productos-tienda {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -551,4 +551,39 @@ footer small {
         font-size: 0.65rem;
         border-radius: 4px;
     }
+}
+
+/* ---------------------------------------------------- scroll al inicio --------------------------------------------------- */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #222;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.scroll-to-top:hover {
+    background: #444;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.scroll-to-top.show {
+    display: flex;
+}
+
+.scroll-to-top .material-symbols-outlined {
+    font-size: 28px;
+    color: white;
 }
