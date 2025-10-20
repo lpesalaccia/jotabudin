@@ -208,12 +208,10 @@ function mostrarCarrito() {
   const lista = document.getElementById("lista-carrito");
   const total = document.getElementById("total");
   const envio = document.getElementById("envio");
-  const descuento = document.getElementById("descuento");
   if (!lista) return;
   lista.innerHTML = "";
   let suma = 0;
   let envioValor = 0;
-  let descuentoValor = 0;
   // Grid de cards estilo ejemplo
   const grid = document.createElement("div");
   grid.style.display = "grid";
@@ -251,10 +249,8 @@ function mostrarCarrito() {
   });
   lista.appendChild(grid);
   envioValor = suma > 0 ? (suma > 4000 ? 0 : 500) : 0;
-  descuentoValor = suma > 5000 ? Math.round(suma * 0.1) : 0;
-  if (total) total.textContent = suma - descuentoValor + envioValor;
+  if (total) total.textContent = suma + envioValor;
   if (envio) envio.textContent = envioValor;
-  if (descuento) descuento.textContent = descuentoValor;
 }
 
 window.cambiarCantidad = function (index, delta) {
@@ -334,14 +330,23 @@ function construirMensajeWhatsapp() {
   lineas.push("Quisiera hacer un pedido con estos productos:");
   lineas.push("");
 
-  let total = 0;
+  let subtotal = 0;
   carrito.forEach(item => {
-    const subtotal = item.precio * item.cantidad;
-    total += subtotal;
-    lineas.push(`- ${item.nombre} x${item.cantidad} = $${subtotal}`);
+    const itemSubtotal = item.precio * item.cantidad;
+    subtotal += itemSubtotal;
+    lineas.push(`- ${item.nombre} x${item.cantidad} = $${itemSubtotal}`);
   });
 
+  const envio = subtotal > 0 ? (subtotal > 4000 ? 0 : 500) : 0;
+  const total = subtotal + envio;
+
   lineas.push("");
+  lineas.push(`Subtotal: $${subtotal}`);
+  if (envio > 0) {
+    lineas.push(`Envío: $${envio}`);
+  } else {
+    lineas.push(`Envío: Gratis`);
+  }
   lineas.push(`Total: $${total}`);
   lineas.push("");
   lineas.push("Para la fecha...");
